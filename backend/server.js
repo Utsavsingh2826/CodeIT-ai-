@@ -90,6 +90,13 @@ io.on("connection", (socket) => {
     });
 });
 
-server.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+(async () => {
+    try {
+        await connect(); // ✅ Wait until DB is connected
+        server.listen(port, () => {
+            console.log(`🚀 Server running at http://localhost:${port}`);
+        });
+    } catch (err) {
+        console.error('❌ Failed to start server:', err);
+    }
+})();
