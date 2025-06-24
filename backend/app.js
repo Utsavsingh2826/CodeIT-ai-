@@ -9,7 +9,7 @@ import cors from 'cors';
 
 
 
-const app = express();
+ const app = express();
 
 app.use(cors());
 app.use(morgan('dev'));
